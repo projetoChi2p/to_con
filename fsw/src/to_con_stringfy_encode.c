@@ -210,7 +210,7 @@ CFE_Status_t TO_CON_StringfyOutputMessage(const CFE_SB_Buffer_t *SourceBuffer, c
     NowTimeMillis = OS_TimeGetTotalMilliseconds(LocalTime);
 
     //ResultStatus = CFE_MSG_GetSize(&SourceBuffer->Msg, &SourceBufferSize);
-    snprintf(TextBuffer, MAX_TO_TEXT_PAYLOAD_BYTES, "%lu %04x %s %s",
+    snprintf(TextBuffer, MAX_TO_TEXT_PAYLOAD_BYTES, "%lu %04lx %s %s",
         (unsigned long)NowTimeMillis,
         MsgIdValue,
         MessageName,
