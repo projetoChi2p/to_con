@@ -76,8 +76,8 @@ CFE_Status_t TO_CON_StringfyOutputMessage(const CFE_SB_Buffer_t *SourceBuffer, c
 {
     uint32_t                    MsgIdValue;
     static char                 TextBuffer[MAX_TO_TEXT_PAYLOAD_BYTES];
-    char                        MessageName[MAX_TO_MSG_NAME_BYTES];
-    char                        MessageText[MAX_TO_MSG_TEXT_BYTES];
+    static char                 MessageName[MAX_TO_MSG_NAME_BYTES];
+    static char                 MessageText[MAX_TO_MSG_TEXT_BYTES];
     OS_time_t                   LocalTime;
     int64                       NowTimeMillis;
     size_t                      ActualLength;
@@ -212,7 +212,7 @@ CFE_Status_t TO_CON_StringfyOutputMessage(const CFE_SB_Buffer_t *SourceBuffer, c
     //ResultStatus = CFE_MSG_GetSize(&SourceBuffer->Msg, &SourceBufferSize);
     snprintf(TextBuffer, MAX_TO_TEXT_PAYLOAD_BYTES, "%lu %04lx %s %s",
         (unsigned long)NowTimeMillis,
-        MsgIdValue,
+        (unsigned long)MsgIdValue,
         MessageName,
         MessageText
     );
